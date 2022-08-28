@@ -19,12 +19,13 @@ import {
   RiMediumFill,
   RiBehanceFill,
 } from "react-icons/ri"
-import { faTiktok, FaWordpress, FaVk } from "react-icons/fa"
+import { FaWordpress, FaVk } from "react-icons/fa"
 
 import Layout from "../components/layout"
 import BlogListHome from "../components/blog-list-home"
 import Seo from "../components/seo"
 import Icons from "../util/socialmedia.json"
+import MainBanner from "../components/MainBanner"
 
 export const pageQuery = graphql`
   query HomeQuery($id: String!) {
@@ -163,13 +164,7 @@ const HomePage = ({ data }) => {
         ) : (
           ""
         )}
-        {icons.icon === "tiktok" ? (
-          <a href={icons.url} target="_blank" aria-label="link to Wordpress" rel="noopener noreferrer">
-            <FaTiktok alt="tiktok icon" />
-          </a>
-        ) : (
-          ""
-        )}
+       
         {icons.icon === "dribbble" ? (
           <a href={icons.url} target="_blank" aria-label="link to Dribbble" rel="noopener noreferrer">
             <RiDribbbleFill alt="Dribbble icon" />
@@ -204,7 +199,9 @@ const HomePage = ({ data }) => {
   return (
     <Layout>
       <Seo />
+     <MainBanner style={{ padding: "0 !important" }}/>
       <div className="home-banner grids col-1 sm-2">
+       
         <div>
           <h1 className="title">{frontmatter.title}</h1>
           <p
@@ -253,6 +250,7 @@ const HomePage = ({ data }) => {
         </div>
       </div>
       <BlogListHome data={posts} />
+      
     </Layout>
   )
 }
